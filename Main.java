@@ -115,7 +115,7 @@ public class Main{
 
         int m = 0; //2
         int r = 1;
-        if (right > skip_indexes.length-1) {
+        if (right > skip_indexes[1]) { //when there are two 'runs' left, only the first two indexes are important- 2nd = end of the first run
             r = right;
             m = mid; //change value of m to whatever is given in the last, separate merge, because otherwise it might be out of bounds
         }
@@ -234,14 +234,10 @@ public class Main{
 //    }
 
     public static void sortLasts(int[] arr){
-        if (skip_indexes[1] + 1 < arr.length-1) {//if it is not the last element of the array,
+        if (skip_indexes[1] + 1 <= arr.length-1) {//if it is not the last element of the array,
             merge(arr, 0, arr.length-1, skip_indexes[1]+1); //merge the sorted part with the last element
             System.out.println("SORTED");
             printArray(arr);
-        }
-        else if (skip_indexes[1] + 1 == arr.length-1)//if it is the last element of the array
-        {
-            merge(arr, 0, arr.length-1, skip_indexes[1]); //skip_indexes[i] is the mid, because the right can't be the mid
         }
         else {
             System.out.println("skp");
