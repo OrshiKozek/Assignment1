@@ -1,24 +1,28 @@
-import com.sun.org.apache.bcel.internal.generic.BREAKPOINT;
-
 public class Main{
 
-    public static int[] skip_indexes = new int[9];
+    public static int[] skip_indexes = new int[15];
     public static int run_size = 3;
 
     public static void main(String []args){
-        int[] array = new int[]{6, 4, 3, 5, 7, 1, 6, 4, 2, 6, 8, 9, 2};//, 7, 4};//, 1};
+        int[] array = new int[]{4, 6, 3, 5, 7, 1, 6, 4, 2, 6, 8, 9, 2, 5, 7, 1, 4, 3, 8, 9, 13, 2, 4, 3};
 
         printArray(array);
+        for(int i = 0; i < array.length; i++)
+            if(i < 10)
+                System.out.print(i + "  ");
+            else
+                System.out.print(i + " ");
         System.out.println();
         find_runs(array);
+        System.out.println();
         printArray(skip_indexes);
 
-        sort_extras(array);
-        printArray(array);
-        helpMerge(array);
-        printArray(array);
-        sortLasts(array);
-        printArray(array);
+//        sort_extras(array);
+//        printArray(array);
+//        helpMerge(array);
+//        printArray(array);
+//        sortLasts(array);
+//        printArray(array);
     }
 
 
@@ -80,31 +84,42 @@ public class Main{
     }
 
     public static void printArray (int[] array){
-        for (int i = 0; i < array.length; i++)
-            System.out.print(array[i] + " ");
+        for (int item: array) {
+            System.out.print(item + "  ");
+        }
         System.out.println();
     }
 
     public static void find_runs(int[] arr) {
-        int i;
+        int i = 0;
         int check = 0;
         int skip_track_index = 0;
-        for (i = 0; i < arr.length; i++) { //go through arr
+        for (i = 0; i < arr.length-1; i++) { //go through arr
             check = i; //this is the first thing that is looked at as if it were the first element of the run (it might be, it might not)
             while (arr[check] < arr[check + 1]) { //compares check to the next one
                 check++; //increase check, to be able to check the next one
+                if(check >= arr.length-1)
+                    break;
             }
+
             if (check - i >= run_size-1) { //make sure that the run is the necessary length- ie 3+ --> for the run to be at least
                 // 3 elements, the difference between the start index and the end index must be at least 2- ie runsize - 1
-
+//                skip_indexes[skip_track_index++] = i-1;
                 skip_indexes[skip_track_index++] = i; //set the next element of the skip_indexes array to be the index of the start of the run.
                 skip_indexes[skip_track_index++] = check; //this is the last index of the given run
+//                skip_indexes[skip_track_index++] = check+1;
 //                printArray(skip_indexes);
             }
+
+//            else if(check - i == 0)
+//                skip_indexes[skip_track_index++] = i; //sets the first element to 0 if the run doesn't start at 0 by itself
+
             i = check;
             if(i == arr.length-2)
                 break; //if the next index we look at is the last element in the array, break
         }
+//        if(skip_indexes[skip_track_index] == arr.length-1)
+//            skip_indexes[skip_track_index] = arr.length-1;
     }
 
     public static void merge(int[] arr, int left, int right, int mid) {
@@ -115,7 +130,7 @@ public class Main{
 
         int m = 0; //2
         int r = 1;
-        if (right > skip_indexes[1]) { //when there are two 'runs' left, only the first two indexes are important- 2nd = end of the first run
+        if (skip_indexes[2] ==0 && right > skip_indexes[1]) { //when there are two 'runs' left, only the first two indexes are important- 2nd = end of the first run
             r = right;
             m = mid; //change value of m to whatever is given in the last, separate merge, because otherwise it might be out of bounds
         }
