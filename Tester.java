@@ -5,7 +5,7 @@ import java.util.Random;
      * A class which manages various sorting algorithms and reports the timing of them.
      * This main class contains some basic code to get started.
      * @author dgbrizan
-     *
+     * Tester is slightly modified from the class Practice05Test class, originally written by Professor David Guy Brizan.
      */
     public class Tester {
 
@@ -171,6 +171,9 @@ import java.util.Random;
                     int [] copy = copyArray();
                     // b) Have the algorithm sort the copy ... while timing it.
                     long start = System.currentTimeMillis();
+                    for(int i : copy){
+                        System.out.print(i + " ");
+                    }
                     sort.sort(copy);
                     // System.out.println("Sorting took: " + (System.currentTimeMillis() - start) + " ms.");
                     long total_time = System.currentTimeMillis() - start;

@@ -1,5 +1,6 @@
-
-
+/**
+ * SortingFactory is a slightly modified version of a class by the same name, originally written by Professor David Guy Brizan.
+*/
 public class SortingFactory {
 
     public final String defaultAlgorithm = "InsertionSort";  // If an improper algorithm name is given, which should be used?
