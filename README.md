@@ -14,3 +14,7 @@ I don't know if this is true since I was unable to run the whole tester program,
 will have roughly the same wall-clock time as normal Merge sort, though possibly slightly faster. I think this is because the algoritm does
 not have to split and sort all the individual elements as in merge sort, because they are already sorted. They only have to be merged, so overall
 it is faster. This might change depending on if I am able to fix the code and run the program correctly.
+
+Currently, the MySort file does not correctly sort the array given. An additional file, Main.java has the same code as MySort.java,
+except for class names, static vs non-static functions, etc. The content of each function is the same. If you run Main.java, it sorts a given array.
+The same code, however does not sort the given array in MySort. I don't understand why it does not sort the same way.
