@@ -20,7 +20,7 @@ import java.util.Random;
          */
         public Tester() {
             populationStrategy = "random";
-            createNewArray(10000);
+            createNewArray(100);//00);
             factory = new SortingFactory(false);
         }
 
@@ -171,9 +171,7 @@ import java.util.Random;
                     int [] copy = copyArray();
                     // b) Have the algorithm sort the copy ... while timing it.
                     long start = System.currentTimeMillis();
-                    for(int i : copy){
-                        System.out.print(i + " ");
-                    }
+
                     sort.sort(copy);
                     // System.out.println("Sorting took: " + (System.currentTimeMillis() - start) + " ms.");
                     long total_time = System.currentTimeMillis() - start;
@@ -186,6 +184,7 @@ import java.util.Random;
                     // System.out.println("----------------------------------------------------");
                 }
                 catch (Exception e) {
+                    System.out.println(e.toString());
                     System.out.println("Unable to instantiate sorting algorithm " + algo);
                 }
             }
@@ -199,7 +198,9 @@ import java.util.Random;
         public static void main(String[] args) {
 
             Tester timing = new Tester();
+//            int [] sizes = {5, 10, 15, 20, 25, 30, 35, 40, 45, 50};
             int [] sizes = {50000, 100000, 150000, 200000, 250000, 300000, 350000, 400000, 450000, 500000};
+
             // int [] sizes = {5, 10};
 
             for (int size : sizes) {
