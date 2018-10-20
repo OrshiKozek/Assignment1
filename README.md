@@ -1,20 +1,13 @@
 # Assignment1
 
-SortingFactory, SortingAlgorithm is a slightly modified version of a class and an interface by the same names, respectively.
+SortingFactory and SortingAlgorithm are slightly modified versions of a class and an interface by the same names, respectively.
 Tester is slightly modified from the class Practice05Test. All three files were originally written by Professor David Guy Brizan.
 
-I was unable to fully complete the hybrid sorting algorithm. When given certain data (ie the array that I had tested it with),
-everything worked fine. However, with a different set of data, it does not sort the array. There is either an index out of bounds
-or a negative index exception thrown, or an infinite loop created that doesn't allow the sorting to be completed. I still need to work on this.
-
 I used Insertion sort to sort the rest of the array that was not in a run. I chose Insertion sort because it is faster for smaller arrays,
-such as the elements of the array between two runs. I find the logic of Insertion sort to be on the easier side, which is also why I chose Insertion sort.
+such as the elements of the array between two runs. I find the logic of Insertion sort to be easier to follow than most other sorting algorithms,
+which drove me to choose it over the others.
 
-I don't know if this is true since I was unable to run the whole tester program, but my hypothesis is that the hybrid sorting algorithm
-will have roughly the same wall-clock time as normal Merge sort, though possibly slightly faster. I think this is because the algoritm does
-not have to split and sort all the individual elements as in merge sort, because they are already sorted. They only have to be merged, so overall
-it is faster. This might change depending on if I am able to fix the code and run the program correctly.
-
-Currently, the MySort file does not correctly sort the array given. An additional file, Main.java has the same code as MySort.java,
-except for class names, static vs non-static functions, etc. The content of each function is the same. If you run Main.java, it sorts a given array.
-The same code, however does not sort the given array in MySort. I don't understand why it does not sort the same way.
+My implementation of the convoluted, modified merge sort was, as I expected, much slower than the conventional Merge sort. However, I was shocked
+by how much slower it was. Nevertheless, it makes sense, because my algorithm performs many more processes than normal Merge sort. Merge sort just splits
+the array into little arrays, orders and merges them. My algorithm goes through the array, sorts the little pieces, goes through it again, and only then
+does it merge the sorted sub-arrays. It is a much more roundabout way to sort the array, and definitely not efficient at all.
